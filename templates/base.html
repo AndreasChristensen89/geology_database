@@ -16,7 +16,7 @@
 
     {% block corecss %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/base_css.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
@@ -36,15 +36,21 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>REAP {% block extra_title %}{% endblock %}</title>
+    <title>Geology Database {% block extra_title %}{% endblock %}</title>
   </head>
   <body class="d-flex flex-column h-100">
     <header>
-        <ul>
-            <li>Mosh</li>
-            <li>Tosh</li>
-            <li>Bosh</li>
-        </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{% url 'INTERFACE:index' %}">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="{% url 'INTERFACE:data_display' %}">Data <span class="sr-only">(current)</span></a>
+              </div>
+            </div>
+          </nav>
     </header>
 
     {% if messages %}
@@ -71,19 +77,10 @@
     {% block content %}
     {% endblock%}
     
-    <footer class="footer mt-auto py-3">
-        <p class="m-0 text-center text-white">MADE BY ANDREAS</p>
-        <p class="m-0 text-center text-white">Follow me: 
-          <a href="https://facebook.com" aria-label="Visit our Facebook page (opens in a new tab)"
-          target="_blank" rel="noopener"><i class="fab fa-facebook-square mx-3 text-white" aria-hidden="true"></i></a>
-          <a href="https://youtube.com" aria-label="Visit our Youtube channel (opens in a new tab)"
-          target="_blank" rel="noopener"><i class="fab fa-youtube-square mx-3 text-white" aria-hidden="true"></i></a>
-          <a href="https://github.com/AndreasChristensen89?tab=repositories" aria-label="Visit my Github page (opens in a new tab)"
-          target="_blank" rel="noopener"><i class="fab fa-github mx-3 text-white" aria-hidden="true"></i></a>
-          <a href="https://instagram.com" aria-label="Visit our instagram page (opens in a new tab)"
-          target="_blank" rel="noopener"><i class="fab fa-instagram-square mx-3 text-white" aria-hidden="true"></i></a>
-        </p>
-        
+    <footer class="footer py-3 border border-black">
+        <p class="m-0 text-center">Geology Database for all researchers</p>
+        <p class="m-0 text-center">Visit our <a href="https://github.com/AndreasChristensen89/geology_database" aria-label="Visit the GitHub repository (opens in a new tab)"
+            target="_blank" rel="noopener">GitHub</a> Repository</p>
     </footer>
 
     {% block postloadjs %}
