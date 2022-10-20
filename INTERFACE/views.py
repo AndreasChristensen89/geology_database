@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Samples
 
 def index(request):
     template = "INTERFACE/index.html"
@@ -7,6 +8,11 @@ def index(request):
 
 
 def data_display(request):
-    template = 'INTERFACE/data_display.html'
 
-    return render(request, template)
+    samples = Samples.objects.all()
+    template = 'INTERFACE/data_display.html'
+    context = {
+        "samples": samples
+    }
+
+    return render(request, template, context)
