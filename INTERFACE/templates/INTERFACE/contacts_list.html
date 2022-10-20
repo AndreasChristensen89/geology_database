@@ -24,39 +24,31 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Material Sample ID</th>
-          <th scope="col">Sampling Location ID</th>
-          <th scope="col">Sample Type</th>
-          <th scope="col">First Sample Aim</th>
-          <th scope="col">Second Sample Aim</th>
-          <th scope="col">Associated Lithologic Observation</th>
-          <th scope="col">Associated Formation</th>
-          <th scope="col">Associated Measure ID</th>
-          <th scope="col">Sampling Date</th>
-          <th scope="col">Sampled By</th>
-          <th scope="col">Sample Remarks</th>
-          <th scope="col">Storage</th>
-          <th scope="col">Igsn</th>
+          <th scope="col">contact_id</th>
+          <th scope="col">location_id</th>
+          <th scope="col">contact_type</th>
+          <th scope="col">associated_lithologic_observation_1</th>
+          <th scope="col">associated_lithologic_observation_2</th>
+          <th scope="col">associated_measured_plane_id</th>
+          <th scope="col">contact_type_remarks</th>
+          <th scope="col">observation_determined_by</th>
+          <th scope="col">observation_date</th>
+
         </tr>
       </thead>
       <tbody>
-        {% for sample in page_obj %}
+        {% for contact in page_obj %}
         <tr>
           <th scope="row">{{ forloop.counter }}</th>
-          <td>{{ sample.material_sample_id }}</td>
-          <td>{{ sample.sampling_location_id }}</td>
-          <td>{{ sample.sample_type }}</td>
-          <td>{{ sample.first_sample_aim }}</td>
-          <td>{{ sample.second_sample_aim }}</td>
-          <td>{{ sample.associated_lithologic_observation }}</td>
-          <td>{{ sample.associated_formation }}</td>
-          <td>{{ sample.associated_measure_id }}</td>
-          <td>{{ sample.sampling_date }}</td>
-          <td>{{ sample.sampled_by }}</td>
-          <td>{{ sample.sample_remarks }}</td>
-          <td>{{ sample.storage }}</td>
-          <td>{{ sample.igsn }}</td>
-
+          <td>{{ contact.contact_id }}</td>
+          <td>{{ contact.location_id }}</td>
+          <td>{{ contact.contact_type }}</td>
+          <td>{{ contact.associated_lithologic_observation_1 }}</td>
+          <td>{{ contact.associated_lithologic_observation_2 }}</td>
+          <td>{{ contact.associated_measured_plane_id }}</td>
+          <td>{{ contact.contact_type_remarks }}</td>
+          <td>{{ contact.observation_determined_by }}</td>
+          <td>{{ contact.observation_date }}</td>
         </tr>
       {% endfor %}
         

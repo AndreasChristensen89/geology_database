@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Samples, AnalysisAr, AnalysisFt
+from .models import Samples, Contacts, LexiconFossils
 from django.views.generic import ListView
 
 def index(request):
@@ -8,13 +8,13 @@ def index(request):
     return render(request, template)
 
 class SamplesListView(ListView):
-    paginate_by = 50
+    paginate_by = 20
     model = Samples
 
-class AnalysisArListView(ListView):
-    paginate_by = 50
-    model = AnalysisAr
+class ContactsListView(ListView):
+    paginate_by = 20
+    model = Contacts
 
-class AnalysisFtListView(ListView):
-    paginate_by = 50
-    model = AnalysisFt
+class LexiconFossilsListView(ListView):
+    paginate_by = 20
+    model = LexiconFossils

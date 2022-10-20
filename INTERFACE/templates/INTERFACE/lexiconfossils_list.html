@@ -24,38 +24,20 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Material Sample ID</th>
-          <th scope="col">Sampling Location ID</th>
-          <th scope="col">Sample Type</th>
-          <th scope="col">First Sample Aim</th>
-          <th scope="col">Second Sample Aim</th>
-          <th scope="col">Associated Lithologic Observation</th>
-          <th scope="col">Associated Formation</th>
-          <th scope="col">Associated Measure ID</th>
-          <th scope="col">Sampling Date</th>
-          <th scope="col">Sampled By</th>
-          <th scope="col">Sample Remarks</th>
-          <th scope="col">Storage</th>
-          <th scope="col">Igsn</th>
+          <th scope="col">ID</th>
+          <th scope="col">Label</th>
+          <th scope="col">Definition</th>
+          <th scope="col">Source</th>
         </tr>
       </thead>
       <tbody>
-        {% for sample in page_obj %}
+        {% for fossil in page_obj %}
         <tr>
           <th scope="row">{{ forloop.counter }}</th>
-          <td>{{ sample.material_sample_id }}</td>
-          <td>{{ sample.sampling_location_id }}</td>
-          <td>{{ sample.sample_type }}</td>
-          <td>{{ sample.first_sample_aim }}</td>
-          <td>{{ sample.second_sample_aim }}</td>
-          <td>{{ sample.associated_lithologic_observation }}</td>
-          <td>{{ sample.associated_formation }}</td>
-          <td>{{ sample.associated_measure_id }}</td>
-          <td>{{ sample.sampling_date }}</td>
-          <td>{{ sample.sampled_by }}</td>
-          <td>{{ sample.sample_remarks }}</td>
-          <td>{{ sample.storage }}</td>
-          <td>{{ sample.igsn }}</td>
+          <td>{{ fossil.id }}</td>
+          <td>{{ fossil.label }}</td>
+          <td>{{ fossil.definition }}</td>
+          <td>{{ fossil.source }}</td>
 
         </tr>
       {% endfor %}
