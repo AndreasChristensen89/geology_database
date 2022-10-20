@@ -3,11 +3,18 @@
 
 {% block content %}
 <div class="container mt-5">
-    <div class="row">
+    <div class="row my-5">
         <div class="col-6 mx-auto text-center">
-            <h1 class="h1">We're off!</h1>
-            <h2 class="h2">This is the change</h2>
+            <h1 class="h1">Geology Database</h1>
         </div>
+    </div>
+
+    <div class="row my-5">
+        <a class="mx-auto" href="{% url 'INTERFACE:data_display' %}">
+            <div class="col mx-auto">
+                <h2 class="h3">Access data</h2>
+            </div>
+        </a>
     </div>
 </div>
 {% endblock %}
