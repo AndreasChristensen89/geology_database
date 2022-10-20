@@ -1,18 +1,20 @@
 from django.shortcuts import render
-from .models import Samples
+from .models import Samples, AnalysisAr, AnalysisFt
+from django.views.generic import ListView
 
 def index(request):
     template = "INTERFACE/index.html"
 
     return render(request, template)
 
+class SamplesListView(ListView):
+    paginate_by = 50
+    model = Samples
 
-def data_display(request):
+class AnalysisArListView(ListView):
+    paginate_by = 50
+    model = AnalysisAr
 
-    samples = Samples.objects.all()
-    template = 'INTERFACE/data_display.html'
-    context = {
-        "samples": samples
-    }
-
-    return render(request, template, context)
+class AnalysisFtListView(ListView):
+    paginate_by = 50
+    model = AnalysisFt

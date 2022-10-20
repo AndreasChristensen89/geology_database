@@ -5,5 +5,5 @@ app_name = 'INTERFACE'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('data-display', views.data_display, name='data_display')
+    path('data-display', views.SamplesListView.as_view(), name='data_display')
 ]
