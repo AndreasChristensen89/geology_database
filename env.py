@@ -1,4 +1,4 @@
 import os
 
 os.environ["DATABASE_URL"] = "URL"
-os.environ["SECRET_KEY"] = "RrandomSecretKey"
+os.environ["DATABASE_KEY"] = "amDE89TgFHLletscode98?"
