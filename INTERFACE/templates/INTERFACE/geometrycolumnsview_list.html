@@ -8,6 +8,7 @@
           <h1 class="h1">Sample Data</h1>
       </div>
   </div>
+
   <div class="row">
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,6 +30,10 @@
     </div>
   </div>
 
+  {% for obj in page_obj %}
+    <div class="lead">{{ obj }}</div>
+  {% endfor %}
+
     <table class="table table-striped my-5">
       <thead>
         <tr>
@@ -40,16 +45,19 @@
         </tr>
       </thead>
       <tbody>
-        {% for fossil in page_obj %}
+        <!-- {% for obj in page_obj %}
         <tr>
           <th scope="row">{{ forloop.counter }}</th>
-          <td>{{ fossil.id }}</td>
-          <td>{{ fossil.label }}</td>
-          <td>{{ fossil.definition }}</td>
-          <td>{{ fossil.source }}</td>
+          <td>{{ obj.f_table_catalog }}</td>
+          <td>{{ obj.f_table_schema }}</td>
+          <td>{{ obj.f_table_name }}</td>
+          <td>{{ obj.f_geometry_column }}</td>
+          <td>{{ obj.coord_dimension }}</td>
+          <td>{{ obj.srid }}</td>
+          <td>{{ obj.type }}</td>
 
         </tr>
-      {% endfor %}
+      {% endfor %} -->
         
       </tbody>
     </table>

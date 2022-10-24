@@ -9,14 +9,24 @@
       </div>
   </div>
 
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Models
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="{% url 'INTERFACE:sample_model' %}">Samples</a>
-      <a class="dropdown-item" href="{% url 'INTERFACE:contacts_model' %}">Contacts</a>
-      <a class="dropdown-item" href="{% url 'INTERFACE:lexicon_follies_model' %}">LexiconFossils</a>
+  <div class="row">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Models
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{% url 'INTERFACE:sample_model' %}">Samples</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:contacts_model' %}">Contacts</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:lexicon_follies_model' %}">LexiconFossils</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Models
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{% url 'INTERFACE:geometry_columns_view' %}">Geometry Columns</a>
+      </div>
     </div>
   </div>
 
