@@ -25,8 +25,18 @@
         Views
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'INTERFACE:field_missions_view' %}">Field Mission List View</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:formation_view' %}">Formation View</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:field_missions_view' %}">Field Missions</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_ar_ar_view' %}">Analysis AR/AR</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_fission_tracks_view' %}">Analysis Fission Tracks</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:contacts_view' %}">Contacts</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_UHe_view' %}">Analysis U/HE</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:lithology_description_view' %}">Lithology Description</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:location_view' %}">Location</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:measurements_lines_view' %}">Measurement Lines</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:measurements_planes_view' %}">Measurement Planes</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:missions_view' %}">Missions</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:sample_sections_view' %}">Sample Sections</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:samples_view' %}">Samples</a>
       </div>
     </div>
   </div>
@@ -35,10 +45,22 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">formation_full_name</th>
-        <th scope="col">detailled_description</th>
-        <th scope="col">latest_age_or_highest_stage</th>
-        <th scope="col">earliest_age_or_lowest_stage</th>
+        <th scope="col">location_id</th>
+        <th scope="col">simple_lithology_description</th>
+        <th scope="col">detailled_lithology_description</th>
+        <th scope="col">formation</th>
+        <th scope="col">alteration_facies</th>
+        <th scope="col">metamorphism_facies</th>
+        <th scope="col">particle_type</th>
+        <th scope="col">particle_shape</th>
+        <th scope="col">rock_texture</th>
+        <th scope="col">color_rock_patina</th>
+        <th scope="col">color_rock_into_break</th>
+        <th scope="col">fossils</th>
+        <th scope="col">deformation</th>
+        <th scope="col">minerals_assemblages</th>
+        <th scope="col">lithologic_description_determined_by</th>
+        <th scope="col">lithology_remarks</th>
       </tr>
     </thead>
     
@@ -46,10 +68,22 @@
       {% for obj in page_obj %}
       <tr>
         <th class="lead">{{ forloop.counter }}</th>
-        <th class="lead">{{ obj.formation_full_name }}</th>
-        <th class="lead">{{ obj.detailled_description }}</th>
-        <th class="lead">{{ obj.latest_age_or_highest_stage }}</th>
-        <th class="lead">{{ obj.earliest_age_or_lowest_stage }}</th>
+        <th class="lead">{{ obj.location_id }}</th>
+        <th class="lead">{{ obj.simple_lithology_description }}</th>
+        <th class="lead">{{ obj.detailled_lithology_description }}</th>
+        <th class="lead">{{ obj.formation }}</th>
+        <th class="lead">{{ obj.alteration_facies }}</th>
+        <th class="lead">{{ obj.metamorphism_facies }}</th>
+        <th class="lead">{{ obj.particle_type }}</th>
+        <th class="lead">{{ obj.particle_shape }}</th>
+        <th class="lead">{{ obj.rock_texture }}</th>
+        <th class="lead">{{ obj.color_rock_patina }}</th>
+        <th class="lead">{{ obj.color_rock_into_break }}</th>
+        <th class="lead">{{ obj.fossils }}</th>
+        <th class="lead">{{ obj.deformation }}</th>
+        <th class="lead">{{ obj.minerals_assemblages }}</th>
+        <th class="lead">{{ obj.lithologic_description_determined_by }}</th>
+        <th class="lead">{{ obj.lithology_remarks }}</th>
       </tr>
     {% endfor %}
       

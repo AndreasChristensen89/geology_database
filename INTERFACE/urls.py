@@ -20,6 +20,7 @@ urlpatterns = [
     path('field-mission-view', views.FieldMissionsViewList.as_view(), name='field_mission_view'),
     path('geometry-columns-view', views.GeometryColumnsViewList.as_view(), name='geometry_columns_view'),
     path('lithology-description-view', views.LithologyDescriptionViewList.as_view(), name='lithology_description_view'),
+    path('location-view', views.LocaltionViewList.as_view(), name='location_view'),
     path('measurements-lines-view', views.MeasurementsLinesViewList.as_view(), name='measurements_lines_view'),
     path('measurements-planes-view', views.MeasurementsPlanesViewList.as_view(), name='measurements_planes_view'),
     path('missions-view', views.MissionsViewList.as_view(), name='missions_view'),

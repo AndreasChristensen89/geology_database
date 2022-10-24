@@ -25,8 +25,18 @@
         Views
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'INTERFACE:field_missions_view' %}">Field Mission List View</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:formation_view' %}">Formation View</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:field_missions_view' %}">Field Missions</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_ar_ar_view' %}">Analysis AR/AR</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_fission_tracks_view' %}">Analysis Fission Tracks</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:contacts_view' %}">Contacts</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_UHe_view' %}">Analysis U/HE</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:lithology_description_view' %}">Lithology Description</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:location_view' %}">Location</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:measurements_lines_view' %}">Measurement Lines</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:measurements_planes_view' %}">Measurement Planes</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:missions_view' %}">Missions</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:sample_sections_view' %}">Sample Sections</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:samples_view' %}">Samples</a>
       </div>
     </div>
   </div>
@@ -35,10 +45,29 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">formation_full_name</th>
-        <th scope="col">detailled_description</th>
-        <th scope="col">latest_age_or_highest_stage</th>
-        <th scope="col">earliest_age_or_lowest_stage</th>
+        <th scope="col">location_id</th>
+        <th scope="col">decimal_longitude</th>
+        <th scope="col">decimal_latitude</th>
+        <th scope="col">geodetic_datum</th>
+        <th scope="col">northing_in_meters</th>
+        <th scope="col">easting_in_meters</th>
+        <th scope="col">georeferenced_by</th>
+        <th scope="col">elevation_in_meters</th>
+        <th scope="col">barometric_elevation_in_meters</th>
+        <th scope="col">georeferenced_local_date</th>
+        <th scope="col">georeferenced_local_time</th>
+        <th scope="col">time_zone</th>
+        <th scope="col">verbatim_locality</th>
+        <th scope="col">mission_detailled_name</th>
+        <th scope="col">simple_lithology_description</th>
+        <th scope="col">detailled_lithology_description</th>
+        <th scope="col">thin_sec_orientation</th>
+        <th scope="col">plane_type</th>
+        <th scope="col">plane_orientation</th>
+        <th scope="col">line_type</th>
+        <th scope="col">line_orientation</th>
+        <th scope="col">number_of_sections</th>
+        <th scope="col">position_on_gis</th>
       </tr>
     </thead>
     
@@ -46,10 +75,29 @@
       {% for obj in page_obj %}
       <tr>
         <th class="lead">{{ forloop.counter }}</th>
-        <th class="lead">{{ obj.formation_full_name }}</th>
-        <th class="lead">{{ obj.detailled_description }}</th>
-        <th class="lead">{{ obj.latest_age_or_highest_stage }}</th>
-        <th class="lead">{{ obj.earliest_age_or_lowest_stage }}</th>
+        <th class="lead">{{ obj.location_id }}</th>
+        <th class="lead">{{ obj.decimal_longitude }}</th>
+        <th class="lead">{{ obj.decimal_latitude }}</th>
+        <th class="lead">{{ obj.geodetic_datum }}</th>
+        <th class="lead">{{ obj.northing_in_meters }}</th>
+        <th class="lead">{{ obj.easting_in_meters }}</th>
+        <th class="lead">{{ obj.georeferenced_by }}</th>
+        <th class="lead">{{ obj.elevation_in_meters }}</th>
+        <th class="lead">{{ obj.barometric_elevation_in_meters }}</th>
+        <th class="lead">{{ obj.georeferenced_local_date }}</th>
+        <th class="lead">{{ obj.georeferenced_local_time }}</th>
+        <th class="lead">{{ obj.time_zone }}</th>
+        <th class="lead">{{ obj.verbatim_locality }}</th>
+        <th class="lead">{{ obj.mission_detailled_name }}</th>
+        <th class="lead">{{ obj.simple_lithology_description }}</th>
+        <th class="lead">{{ obj.detailled_lithology_description }}</th>
+        <th class="lead">{{ obj.thin_sec_orientation }}</th>
+        <th class="lead">{{ obj.plane_type }}</th>
+        <th class="lead">{{ obj.plane_orientation }}</th>
+        <th class="lead">{{ obj.line_type }}</th>
+        <th class="lead">{{ obj.line_orientation }}</th>
+        <th class="lead">{{ obj.number_of_sections }}</th>
+        <th class="lead">{{ obj.position_on_gis }}</th>
       </tr>
     {% endfor %}
       

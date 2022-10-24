@@ -25,8 +25,18 @@
         Views
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'INTERFACE:field_missions_view' %}">Field Mission List View</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:formation_view' %}">Formation View</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:field_missions_view' %}">Field Missions</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_ar_ar_view' %}">Analysis AR/AR</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_fission_tracks_view' %}">Analysis Fission Tracks</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:contacts_view' %}">Contacts</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_UHe_view' %}">Analysis U/HE</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:lithology_description_view' %}">Lithology Description</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:location_view' %}">Location</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:measurements_lines_view' %}">Measurement Lines</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:measurements_planes_view' %}">Measurement Planes</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:missions_view' %}">Missions</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:sample_sections_view' %}">Sample Sections</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:samples_view' %}">Samples</a>
       </div>
     </div>
   </div>
@@ -35,10 +45,24 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">formation_full_name</th>
-        <th scope="col">detailled_description</th>
-        <th scope="col">latest_age_or_highest_stage</th>
-        <th scope="col">earliest_age_or_lowest_stage</th>
+        <th scope="col">material_sample_id</th>
+        <th scope="col">location_id</th>
+        <th scope="col">decimal_latitude</th>
+        <th scope="col">decimal_longitude</th>
+        <th scope="col">elevation_in_meters</th>
+        <th scope="col">barometric_elevation_in_meters</th>
+        <th scope="col">verbatim_locality</th>
+        <th scope="col">field_mission_id</th>
+        <th scope="col">analysed_by</th>
+        <th scope="col">sampling_date</th>
+        <th scope="col">simple_lithology_description</th>
+        <th scope="col">alteration_facies</th>
+        <th scope="col">metamorphism_facies</th>
+        <th scope="col">formation</th>
+        <th scope="col">current_storage</th>
+        <th scope="col">comment</th>
+        <th scope="col">number_36ar_fv_field</th>
+        <th scope="col">location_on_gis</th>
       </tr>
     </thead>
     
@@ -46,10 +70,24 @@
       {% for obj in page_obj %}
       <tr>
         <th class="lead">{{ forloop.counter }}</th>
-        <th class="lead">{{ obj.formation_full_name }}</th>
-        <th class="lead">{{ obj.detailled_description }}</th>
-        <th class="lead">{{ obj.latest_age_or_highest_stage }}</th>
-        <th class="lead">{{ obj.earliest_age_or_lowest_stage }}</th>
+        <th class="lead">{{ obj.material_sample_id }}</th>
+        <th class="lead">{{ obj.location_id }}</th>
+        <th class="lead">{{ obj.decimal_latitude }}</th>
+        <th class="lead">{{ obj.decimal_longitude }}</th>
+        <th class="lead">{{ obj.elevation_in_meters }}</th>
+        <th class="lead">{{ obj.barometric_elevation_in_meters }}</th>
+        <th class="lead">{{ obj.verbatim_locality }}</th>
+        <th class="lead">{{ obj.field_mission_id }}</th>
+        <th class="lead">{{ obj.analysed_by }}</th>
+        <th class="lead">{{ obj.sampling_date }}</th>
+        <th class="lead">{{ obj.simple_lithology_description }}</th>
+        <th class="lead">{{ obj.alteration_facies }}</th>
+        <th class="lead">{{ obj.metamorphism_facies }}</th>
+        <th class="lead">{{ obj.formation }}</th>
+        <th class="lead">{{ obj.current_storage }}</th>
+        <th class="lead">{{ obj.comment }}</th>
+        <th class="lead">{{ obj.number_36ar_fv_field }}</th>
+        <th class="lead">{{ obj.location_on_gis }}</th>
       </tr>
     {% endfor %}
       
