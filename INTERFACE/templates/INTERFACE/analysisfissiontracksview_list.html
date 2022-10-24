@@ -35,31 +35,22 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">mission_name</th>
-        <th scope="col">regional_place</th>
-        <th scope="col">start_date</th>
-        <th scope="col">end_date</th>
-        <th scope="col">stations_range</th>
-        <th scope="col">samples_range</th>
-        <th scope="col">participants</th>
-        <th scope="col">field_notebooks</th>
-        <th scope="col">associated_project</th>
-
+        <th scope="col">formation_full_name</th>
+        <th scope="col">detailled_description</th>
+        <th scope="col">latest_age_or_highest_stage</th>
+        <th scope="col">earliest_age_or_lowest_stage</th>
       </tr>
     </thead>
+    
     <tbody>
       {% for obj in page_obj %}
       <tr>
-      <th class="lead">{{ obj.mission_name }}</th>
-      <th class="lead">{{ obj.regional_place }}</th>
-      <th class="lead">{{ obj.start_date }}</th>
-      <th class="lead">{{ obj.end_date }}</th>
-      <th class="lead">{{ obj.stations_range }}</th>
-      <th class="lead">{{ obj.samples_range }}</th>
-      <th class="lead">{{ obj.participants }}</th>
-      <th class="lead">{{ obj.field_notebooks }}</th>
-      <th class="lead">{{ obj.associated_project }}</th>
-    </tr>
+        <th class="lead">{{ forloop.counter }}</th>
+        <th class="lead">{{ obj.formation_full_name }}</th>
+        <th class="lead">{{ obj.detailled_description }}</th>
+        <th class="lead">{{ obj.latest_age_or_highest_stage }}</th>
+        <th class="lead">{{ obj.earliest_age_or_lowest_stage }}</th>
+      </tr>
     {% endfor %}
       
     </tbody>

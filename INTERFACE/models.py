@@ -736,9 +736,9 @@ class SpatialRefSys(models.Model):
         db_table = 'spatial_ref_sys'
 
 # ------------------------------------ views ------------------------------------
-
+# works
 class FormationsView(models.Model):
-    formation_id = models.CharField(db_column='Formation ID', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    formation_id = models.CharField(db_column='Formation ID', primary_key=True, max_length=100)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     formation_full_name = models.CharField(db_column='Formation Full Name', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     detailled_description = models.TextField(db_column='Detailled description', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     latest_age_or_highest_stage = models.CharField(db_column='Latest Age Or Highest Stage', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -762,30 +762,31 @@ class GeographyColumnsView(models.Model):
         managed = False  # Created from a view. Don't remove.
         db_table = 'geography_columns View'
 
-    class AnalysisArArView(models.Model):
-        analysis_id = models.CharField(db_column='Analysis ID', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        material_sample_id = models.CharField(db_column='Material Sample ID', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        location_id = models.CharField(db_column='Location ID', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        decimal_latitude = models.CharField(db_column='Decimal Latitude', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        decimal_longitude = models.CharField(db_column='Decimal Longitude', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        elevation_in_meters = models.FloatField(db_column='Elevation In Meters', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        barometric_elevation_in_meters = models.FloatField(db_column='Barometric Elevation in Meters', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        verbatim_locality = models.TextField(db_column='Verbatim Locality', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        field_mission_id = models.CharField(db_column='Field Mission ID', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        analysed_by = models.TextField(db_column='Analysed By', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        sampling_date = models.DateField(db_column='Sampling date', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        simple_lithology_description = models.CharField(db_column='Simple Lithology Description', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        alteration_facies = models.CharField(db_column='Alteration Facies', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        metamorphism_facies = models.CharField(db_column='Metamorphism Facies', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        formation = models.CharField(db_column='Formation', max_length=100, blank=True, null=True)  # Field name made lowercase.
-        current_storage = models.TextField(db_column='Current storage', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-        comment = models.TextField(db_column='Comment', blank=True, null=True)  # Field name made lowercase.
-        number_36ar_fv_field = models.FloatField(db_column='36Ar [fV]', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'. Field renamed because it wasn't a valid Python identifier.
-        location_on_gis = models.TextField(db_column='Location on GIS', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. This field type is a guess.
 
-        class Meta:
-            managed = False  # Created from a view. Don't remove.
-            db_table = 'analysis_ar_ar_view'
+class AnalysisArArView(models.Model):
+    analysis_id = models.CharField(db_column='Analysis ID', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    material_sample_id = models.CharField(db_column='Material Sample ID', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    location_id = models.CharField(db_column='Location ID', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    decimal_latitude = models.CharField(db_column='Decimal Latitude', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    decimal_longitude = models.CharField(db_column='Decimal Longitude', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    elevation_in_meters = models.FloatField(db_column='Elevation In Meters', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    barometric_elevation_in_meters = models.FloatField(db_column='Barometric Elevation in Meters', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    verbatim_locality = models.TextField(db_column='Verbatim Locality', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    field_mission_id = models.CharField(db_column='Field Mission ID', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    analysed_by = models.TextField(db_column='Analysed By', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    sampling_date = models.DateField(db_column='Sampling date', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    simple_lithology_description = models.CharField(db_column='Simple Lithology Description', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    alteration_facies = models.CharField(db_column='Alteration Facies', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    metamorphism_facies = models.CharField(db_column='Metamorphism Facies', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    formation = models.CharField(db_column='Formation', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    current_storage = models.TextField(db_column='Current storage', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    comment = models.TextField(db_column='Comment', blank=True, null=True)  # Field name made lowercase.
+    number_36ar_fv_field = models.FloatField(db_column='36Ar [fV]', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'. Field renamed because it wasn't a valid Python identifier.
+    location_on_gis = models.TextField(db_column='Location on GIS', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. This field type is a guess.
+
+    class Meta:
+        managed = False  # Created from a view. Don't remove.
+        db_table = 'analysis_ar_ar_view'
 
 
 class AnalysisFissionTracksView(models.Model):
@@ -829,6 +830,7 @@ class AnalysisFissionTracksView(models.Model):
         managed = False  # Created from a view. Don't remove.
         db_table = 'analysis_fission_tracks_view'
 
+
 class ContactsView(models.Model):
     contact_id = models.IntegerField(db_column='Contact ID', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     location_id = models.CharField(db_column='Location ID', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -843,6 +845,7 @@ class ContactsView(models.Model):
     class Meta:
         managed = False  # Created from a view. Don't remove.
         db_table = 'contacts_view'
+
 
 class AnalysisUHeView(models.Model):
     analysis_id = models.CharField(db_column='Analysis ID', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -881,7 +884,7 @@ class AnalysisUHeView(models.Model):
         managed = False  # Created from a view. Don't remove.
         db_table = 'analysis_u_he_view'
 
-
+#works
 class FieldMissionsView(models.Model):
     mission_id = models.CharField(db_column='Mission ID', primary_key=True, max_length=100)
     mission_name = models.TextField(db_column='Mission Name', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -911,6 +914,7 @@ class GeometryColumnsView(models.Model):
     class Meta:
         managed = False  # Created from a view. Don't remove.
         db_table = 'geometry_columns View'
+
 
 class LithologyDescriptionView(models.Model):
     description_lithology_id = models.SmallIntegerField(db_column='Description Lithology ID', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -1040,6 +1044,7 @@ class MissionsView(models.Model):
     class Meta:
         managed = False  # Created from a view. Don't remove.
         db_table = 'missions_view'
+
 
 class SampleSectionsView(models.Model):
     sample_section_id = models.CharField(db_column='Sample Section ID', max_length=100, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
