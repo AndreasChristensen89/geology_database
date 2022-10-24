@@ -1,6 +1,6 @@
 from re import template
 from django.shortcuts import render
-from .models import Samples, Contacts, LexiconFossils, GeometryColumnsView
+from .models import *
 from django.views.generic import ListView
 
 def index(request):
@@ -20,6 +20,8 @@ class LexiconFossilsListView(ListView):
     paginate_by = 20
     model = LexiconFossils
 
-class GeometryColumnsViewListView(ListView):
+# -------------------------------------- views --------------------------------------
+
+class FieldMissionsViewList(ListView):
     paginate_by = 20
-    model = GeometryColumnsView
+    model = FieldMissionsView

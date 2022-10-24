@@ -8,5 +8,5 @@ urlpatterns = [
     path('samples-model', views.SamplesListView.as_view(), name='sample_model'),
     path('contacts-model', views.ContactsListView.as_view(), name='contacts_model'),
     path('lexicon-follies-model', views.LexiconFossilsListView.as_view(), name='lexicon_follies_model'),
-    path('geometry-columns-view', views.GeometryColumnsViewListView.as_view(), name='geometry_columns_view'),
+    path('field-missions-view', views.FieldMissionsViewList.as_view(), name='field_missions_view'),
 ]
