@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
+{% load interfacetags %}
 
 {% block content %}
 <div class="container">
   <div class="row my-5">
       <div class="col-6 mx-auto text-center">
-          <h1 class="h1">Sample Data</h1>
+          <h1 class="h1">
+            {{ object | to_class_name }} Data</h1>
       </div>
   </div>
+
   <div class="row">
     <div class="dropdown px-2">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -17,6 +20,8 @@
         <a class="dropdown-item" href="{% url 'INTERFACE:sample_model' %}">Samples</a>
         <a class="dropdown-item" href="{% url 'INTERFACE:contacts_model' %}">Contacts</a>
         <a class="dropdown-item" href="{% url 'INTERFACE:lexicon_follies_model' %}">LexiconFossils</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:test_fields_names' %}">Test</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:test_fields_names_new' %}">Test New</a>
       </div>
     </div>
     <div class="dropdown">
@@ -40,48 +45,34 @@
     </div>
   </div>
 
-    <table class="table table-striped my-5">
-      <thead>
+  <table class="table table-striped my-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        {% for instance in data %}
+          {% if forloop.counter == 1 %}
+            {% for field, value in instance.fields.items %}
+              <th scope="col">{{ field }}</th>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </tr>
+    </thead>
+    
+    <tbody>
+      {% for instance in data %}
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">ID</th>
-          <th scope="col">Label</th>
-          <th scope="col">Definition</th>
-          <th scope="col">Source</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for fossil in page_obj %}
-        <tr>
-          <th scope="row">{{ forloop.counter }}</th>
-          <td>{{ fossil.id }}</td>
-          <td>{{ fossil.label }}</td>
-          <td>{{ fossil.definition }}</td>
-          <td>{{ fossil.source }}</td>
+        <th class="lead">{{ forloop.counter }}</th>
+
+        {% for field, value in instance.fields.items %}
+          <th class="lead">{{ value }}</th>
+        {% endfor %}
 
         </tr>
       {% endfor %}
-        
-      </tbody>
-    </table>
+    </tbody>
+  </table>
 
-    <div class="pagination">
-      <span class="step-links">
-          {% if page_obj.has_previous %}
-              <a href="?page=1">&laquo; first</a>
-              <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-          {% endif %}
-
-          <span class="current">
-              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-          </span>
-
-          {% if page_obj.has_next %}
-              <a href="?page={{ page_obj.next_page_number }}">next</a>
-              <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-          {% endif %}
-      </span>
-    </div>
   </div>
 </div>
 {% endblock %}

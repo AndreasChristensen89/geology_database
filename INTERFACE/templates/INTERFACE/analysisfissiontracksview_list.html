@@ -1,148 +1,48 @@
-{% extends "base.html" %}
+{% extends "view_base.html" %}
 {% load static %}
+{% load interfacetags %}
 
-{% block content %}
-<div class="container">
-  <div class="row my-5">
-      <div class="col-6 mx-auto text-center">
-          <h1 class="h1">Sample Data</h1>
-      </div>
-  </div>
-
-  <div class="row">
-    <div class="dropdown px-2">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Models
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'INTERFACE:sample_model' %}">Samples</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:contacts_model' %}">Contacts</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:lexicon_follies_model' %}">LexiconFossils</a>
-      </div>
-    </div>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Views
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'INTERFACE:field_missions_view' %}">Field Missions</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_ar_ar_view' %}">Analysis AR/AR</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_fission_tracks_view' %}">Analysis Fission Tracks</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:contacts_view' %}">Contacts</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_UHe_view' %}">Analysis U/HE</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:lithology_description_view' %}">Lithology Description</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:location_view' %}">Location</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:measurements_lines_view' %}">Measurement Lines</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:measurements_planes_view' %}">Measurement Planes</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:missions_view' %}">Missions</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:sample_sections_view' %}">Sample Sections</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:samples_view' %}">Samples</a>
-      </div>
-    </div>
-  </div>
-
-  <table class="table table-striped my-5">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">material_sample_id</th>
-        <th scope="col">location_id</th>
-        <th scope="col">decimal_latitude</th>
-        <th scope="col">decimal_longitude</th>
-        <th scope="col">elevation_in_meters</th>
-        <th scope="col">barometric_elevation_in_meters</th>
-        <th scope="col">verbatim_locality</th>
-        <th scope="col">field_mission_id</th>
-        <th scope="col">analysed_by</th>
-        <th scope="col">sampling_date</th>
-        <th scope="col">simple_lithology_description</th>
-        <th scope="col">alteration_facies</th>
-        <th scope="col">metamorphism_facies</th>
-        <th scope="col">formation</th>
-        <th scope="col">current_storage</th>
-        <th scope="col">comment</th>
-        <th scope="col">n_grains</th>
-        <th scope="col">ps</th>
-        <th scope="col">ns</th>
-        <th scope="col">pi</th>
-        <th scope="col">ni</th>
-        <th scope="col">pd</th>
-        <th scope="col">nd</th>
-        <th scope="col">px2</th>
-        <th scope="col">dispersion</th>
-        <th scope="col">central_age_ma_field</th>
-        <th scope="col">number_1s_central_age_ma_field</th>
-        <th scope="col">mtl_um_field</th>
-        <th scope="col">number_1s_mtl_um_field</th>
-        <th scope="col">n_lengths</th>
-        <th scope="col">dpar_um_field</th>
-        <th scope="col">number_1s_dpar_um_field</th>
-        <th scope="col">u_ppm_field</th>
-        <th scope="col">location_on_gis</th>
-      </tr>
-    </thead>
-    
-    <tbody>
-      {% for obj in page_obj %}
-      <tr>
-        <th class="lead">{{ forloop.counter }}</th>
-        <th class="lead">{{ obj.material_sample_id }}</th>
-        <th class="lead">{{ obj.location_id }}</th>
-        <th class="lead">{{ obj.decimal_latitude }}</th>
-        <th class="lead">{{ obj.decimal_longitude }}</th>
-        <th class="lead">{{ obj.elevation_in_meters }}</th>
-        <th class="lead">{{ obj.barometric_elevation_in_meters }}</th>
-        <th class="lead">{{ obj.verbatim_locality }}</th>
-        <th class="lead">{{ obj.field_mission_id }}</th>
-        <th class="lead">{{ obj.analysed_by }}</th>
-        <th class="lead">{{ obj.sampling_date }}</th>
-        <th class="lead">{{ obj.simple_lithology_description }}</th>
-        <th class="lead">{{ obj.alteration_facies }}</th>
-        <th class="lead">{{ obj.metamorphism_facies }}</th>
-        <th class="lead">{{ obj.formation }}</th>
-        <th class="lead">{{ obj.current_storage }}</th>
-        <th class="lead">{{ obj.comment }}</th>
-        <th class="lead">{{ obj.n_grains }}</th>
-        <th class="lead">{{ obj.ps }}</th>
-        <th class="lead">{{ obj.ns }}</th>
-        <th class="lead">{{ obj.pi }}</th>
-        <th class="lead">{{ obj.ni }}</th>
-        <th class="lead">{{ obj.pd }}</th>
-        <th class="lead">{{ obj.nd }}</th>
-        <th class="lead">{{ obj.px2 }}</th>
-        <th class="lead">{{ obj.dispersion }}</th>
-        <th class="lead">{{ obj.central_age_ma_field }}</th>
-        <th class="lead">{{ obj.number_1s_central_age_ma_field }}</th>
-        <th class="lead">{{ obj.mtl_um_field }}</th>
-        <th class="lead">{{ obj.number_1s_mtl_um_field }}</th>
-        <th class="lead">{{ obj.n_lengths }}</th>
-        <th class="lead">{{ obj.dpar_um_field }}</th>
-        <th class="lead">{{ obj.number_1s_dpar_um_field }}</th>
-        <th class="lead">{{ obj.u_ppm_field }}</th>
-        <th class="lead">{{ obj.location_on_gis }}</th>
-      </tr>
-    {% endfor %}
-      
-    </tbody>
-  </table>
-
-    <div class="pagination">
-      <span class="step-links">
-          {% if page_obj.has_previous %}
-              <a href="?page=1">&laquo; first</a>
-              <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-          {% endif %}
-
-          <span class="current">
-              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-          </span>
-
-          {% if page_obj.has_next %}
-              <a href="?page={{ page_obj.next_page_number }}">next</a>
-              <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-          {% endif %}
-      </span>
-    </div>
-  </div>
-</div>
+{% block inner_content %}
+  <tbody>
+    {% for obj in page_obj %}
+    <tr>
+      <th class="lead">{{ forloop.counter }}</th>
+      <th class="lead">{{ obj.material_sample_id }}</th>
+      <th class="lead">{{ obj.location_id }}</th>
+      <th class="lead">{{ obj.decimal_latitude }}</th>
+      <th class="lead">{{ obj.decimal_longitude }}</th>
+      <th class="lead">{{ obj.elevation_in_meters }}</th>
+      <th class="lead">{{ obj.barometric_elevation_in_meters }}</th>
+      <th class="lead">{{ obj.verbatim_locality }}</th>
+      <th class="lead">{{ obj.field_mission_id }}</th>
+      <th class="lead">{{ obj.analysed_by }}</th>
+      <th class="lead">{{ obj.sampling_date }}</th>
+      <th class="lead">{{ obj.simple_lithology_description }}</th>
+      <th class="lead">{{ obj.alteration_facies }}</th>
+      <th class="lead">{{ obj.metamorphism_facies }}</th>
+      <th class="lead">{{ obj.formation }}</th>
+      <th class="lead">{{ obj.current_storage }}</th>
+      <th class="lead">{{ obj.comment }}</th>
+      <th class="lead">{{ obj.n_grains }}</th>
+      <th class="lead">{{ obj.ps }}</th>
+      <th class="lead">{{ obj.ns }}</th>
+      <th class="lead">{{ obj.pi }}</th>
+      <th class="lead">{{ obj.ni }}</th>
+      <th class="lead">{{ obj.pd }}</th>
+      <th class="lead">{{ obj.nd }}</th>
+      <th class="lead">{{ obj.px2 }}</th>
+      <th class="lead">{{ obj.dispersion }}</th>
+      <th class="lead">{{ obj.central_age_ma_field }}</th>
+      <th class="lead">{{ obj.number_1s_central_age_ma_field }}</th>
+      <th class="lead">{{ obj.mtl_um_field }}</th>
+      <th class="lead">{{ obj.number_1s_mtl_um_field }}</th>
+      <th class="lead">{{ obj.n_lengths }}</th>
+      <th class="lead">{{ obj.dpar_um_field }}</th>
+      <th class="lead">{{ obj.number_1s_dpar_um_field }}</th>
+      <th class="lead">{{ obj.u_ppm_field }}</th>
+      <th class="lead">{{ obj.location_on_gis }}</th>
+    </tr>
+  {% endfor %}
+</tbody>
 {% endblock %}
+      

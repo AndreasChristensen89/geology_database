@@ -9,6 +9,8 @@ urlpatterns = [
     path('contacts-model', views.ContactsListView.as_view(), name='contacts_model'),
     path('lexicon-follies-model', views.LexiconFossilsListView.as_view(), name='lexicon_follies_model'),
     path('field-missions-view', views.FieldMissionsViewList.as_view(), name='field_missions_view'),
+    path('test-field-names', views.testFieldNames, name='test_fields_names'),
+    path('test-field-names-new', views.testFieldNamesNew, name='test_fields_names_new'),
     # Postgres views
     path('field-missions-view', views.FieldMissionsViewList.as_view(), name='field_missions_view'),
     path('formation-view', views.FormationsViewList.as_view(), name='formation_view'),

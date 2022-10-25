@@ -1,13 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
+{% load interfacetags %}
 
 {% block content %}
 <div class="container">
   <div class="row my-5">
       <div class="col-6 mx-auto text-center">
-          <h1 class="h1">Sample Data</h1>
+          <h1 class="h1">
+            {% for object in page_obj %}
+              {% if forloop.counter == 1 %}
+                {{ object | to_class_name }} Data
+              {% endif %}
+            {% endfor %}
+          </h1>
       </div>
   </div>
+
   <div class="row">
     <div class="dropdown px-2">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -24,6 +32,7 @@
         Views
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{% url 'INTERFACE:formation_view' %}">Formation</a>
         <a class="dropdown-item" href="{% url 'INTERFACE:field_missions_view' %}">Field Missions</a>
         <a class="dropdown-item" href="{% url 'INTERFACE:analysis_ar_ar_view' %}">Analysis AR/AR</a>
         <a class="dropdown-item" href="{% url 'INTERFACE:analysis_fission_tracks_view' %}">Analysis Fission Tracks</a>
@@ -40,30 +49,19 @@
     </div>
   </div>
 
-    <table class="table table-striped my-5">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">ID</th>
-          <th scope="col">Label</th>
-          <th scope="col">Definition</th>
-          <th scope="col">Source</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for fossil in page_obj %}
-        <tr>
-          <th scope="row">{{ forloop.counter }}</th>
-          <td>{{ fossil.id }}</td>
-          <td>{{ fossil.label }}</td>
-          <td>{{ fossil.definition }}</td>
-          <td>{{ fossil.source }}</td>
-
-        </tr>
-      {% endfor %}
-        
-      </tbody>
-    </table>
+  <table class="table table-striped my-5">
+    <thead>
+      <tr>
+        {% for field in fields %}
+        <th scope="col">{{ field }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    
+    {% block inner_content %}
+    
+    {% endblock %}
+  </table>
 
     <div class="pagination">
       <span class="step-links">

@@ -1,16 +1,23 @@
 {% extends "base.html" %}
 {% load static %}
+{% load interfacetags %}
 
 {% block content %}
 <div class="container">
   <div class="row my-5">
       <div class="col-6 mx-auto text-center">
-          <h1 class="h1">Sample Data</h1>
+          <h1 class="h1">
+            {% for object in page_obj %}
+              {% if forloop.counter == 1 %}
+                {{ object | to_class_name }} Data
+              {% endif %}
+            {% endfor %}
+          </h1>
       </div>
   </div>
 
   <div class="row">
-    <div class="dropdown">
+    <div class="dropdown px-2">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Models
       </button>
@@ -18,6 +25,8 @@
         <a class="dropdown-item" href="{% url 'INTERFACE:sample_model' %}">Samples</a>
         <a class="dropdown-item" href="{% url 'INTERFACE:contacts_model' %}">Contacts</a>
         <a class="dropdown-item" href="{% url 'INTERFACE:lexicon_follies_model' %}">LexiconFossils</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:test_fields_names' %}">Test</a>
+        <a class="dropdown-item" href="{% url 'INTERFACE:test_fields_names_new' %}">Test New</a>
       </div>
     </div>
     <div class="dropdown">

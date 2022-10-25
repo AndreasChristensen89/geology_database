@@ -35,9 +35,6 @@ class AnalysisAr(models.Model):
         db_table = 'analysis_ar'
 
 
-
-
-
 class AnalysisFt(models.Model):
     analysis_id = models.CharField(db_column='Analysis ID', primary_key=True, max_length=100)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     material_sample_id = models.ForeignKey('Samples', models.DO_NOTHING, db_column='Material Sample ID')  # Field name made lowercase. Field renamed to remove unsuitable characters.

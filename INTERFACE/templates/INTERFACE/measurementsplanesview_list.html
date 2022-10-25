@@ -1,128 +1,38 @@
-{% extends "base.html" %}
+{% extends "view_base.html" %}
 {% load static %}
+{% load interfacetags %}
 
-{% block content %}
-<div class="container">
-  <div class="row my-5">
-      <div class="col-6 mx-auto text-center">
-          <h1 class="h1">Sample Data</h1>
-      </div>
-  </div>
-
-  <div class="row">
-    <div class="dropdown px-2">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Models
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'INTERFACE:sample_model' %}">Samples</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:contacts_model' %}">Contacts</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:lexicon_follies_model' %}">LexiconFossils</a>
-      </div>
-    </div>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Views
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'INTERFACE:field_missions_view' %}">Field Missions</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_ar_ar_view' %}">Analysis AR/AR</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_fission_tracks_view' %}">Analysis Fission Tracks</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:contacts_view' %}">Contacts</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:analysis_UHe_view' %}">Analysis U/HE</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:lithology_description_view' %}">Lithology Description</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:location_view' %}">Location</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:measurements_lines_view' %}">Measurement Lines</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:measurements_planes_view' %}">Measurement Planes</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:missions_view' %}">Missions</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:sample_sections_view' %}">Sample Sections</a>
-        <a class="dropdown-item" href="{% url 'INTERFACE:samples_view' %}">Samples</a>
-      </div>
-    </div>
-  </div>
-
-  <table class="table table-striped my-5">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">location_id</th>
-        <th scope="col">decimal_longitude</th>
-        <th scope="col">decimal_latitude</th>
-        <th scope="col">geodetic_datum</th>
-        <th scope="col">northing_in_meters</th>
-        <th scope="col">easting_in_meters</th>
-        <th scope="col">georeferenced_by</th>
-        <th scope="col">elevation_in_meters</th>
-        <th scope="col">barometric_elevation_in_meters</th>
-        <th scope="col">georeferenced_local_date</th>
-        <th scope="col">georeferenced_local_time</th>
-        <th scope="col">time_zone</th>
-        <th scope="col">verbatim_locality</th>
-        <th scope="col">mission_detailled_name</th>
-        <th scope="col">formation</th>
-        <th scope="col">plane_type</th>
-        <th scope="col">polarity</th>
-        <th scope="col">dip</th>
-        <th scope="col">azimuth</th>
-        <th scope="col">measurement_accuracy</th>
-        <th scope="col">measurement_determined_date</th>
-        <th scope="col">measurement_determined_by</th>
-        <th scope="col">instrument_id</th>
-        <th scope="col">location_on_gis</th>
-      </tr>
-    </thead>
-    
-    <tbody>
-      {% for obj in page_obj %}
-      <tr>
-        <th class="lead">{{ forloop.counter }}</th>
-        <th class="lead">{{ obj.location_id }}</th>
-        <th class="lead">{{ obj.decimal_longitude }}</th>
-        <th class="lead">{{ obj.decimal_latitude }}</th>
-        <th class="lead">{{ obj.geodetic_datum }}</th>
-        <th class="lead">{{ obj.northing_in_meters }}</th>
-        <th class="lead">{{ obj.easting_in_meters }}</th>
-        <th class="lead">{{ obj.georeferenced_by }}</th>
-        <th class="lead">{{ obj.elevation_in_meters }}</th>
-        <th class="lead">{{ obj.barometric_elevation_in_meters }}</th>
-        <th class="lead">{{ obj.georeferenced_local_date }}</th>
-        <th class="lead">{{ obj.georeferenced_local_time }}</th>
-        <th class="lead">{{ obj.time_zone }}</th>
-        <th class="lead">{{ obj.verbatim_locality }}</th>
-        <th class="lead">{{ obj.mission_detailled_name }}</th>
-        <th class="lead">{{ obj.formation }}</th>
-        <th class="lead">{{ obj.plane_type }}</th>
-        <th class="lead">{{ obj.polarity }}</th>
-        <th class="lead">{{ obj.dip }}</th>
-        <th class="lead">{{ obj.azimuth }}</th>
-        <th class="lead">{{ obj.measurement_accuracy }}</th>
-        <th class="lead">{{ obj.measurement_determined_date }}</th>
-        <th class="lead">{{ obj.measurement_determined_by }}</th>
-        <th class="lead">{{ obj.instrument_id }}</th>
-        <th class="lead">{{ obj.location_on_gis }}</th>
-      </tr>
-    {% endfor %}
-      
-    </tbody>
-  </table>
-
-    <div class="pagination">
-      <span class="step-links">
-          {% if page_obj.has_previous %}
-              <a href="?page=1">&laquo; first</a>
-              <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-          {% endif %}
-
-          <span class="current">
-              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-          </span>
-
-          {% if page_obj.has_next %}
-              <a href="?page={{ page_obj.next_page_number }}">next</a>
-              <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-          {% endif %}
-      </span>
-    </div>
-  </div>
-</div>
+{% block inner_content %}
+  <tbody>
+    {% for obj in page_obj %}
+    <tr>
+      <th class="lead">{{ forloop.counter }}</th>
+      <th class="lead">{{ obj.location_id }}</th>
+      <th class="lead">{{ obj.decimal_longitude }}</th>
+      <th class="lead">{{ obj.decimal_latitude }}</th>
+      <th class="lead">{{ obj.geodetic_datum }}</th>
+      <th class="lead">{{ obj.northing_in_meters }}</th>
+      <th class="lead">{{ obj.easting_in_meters }}</th>
+      <th class="lead">{{ obj.georeferenced_by }}</th>
+      <th class="lead">{{ obj.elevation_in_meters }}</th>
+      <th class="lead">{{ obj.barometric_elevation_in_meters }}</th>
+      <th class="lead">{{ obj.georeferenced_local_date }}</th>
+      <th class="lead">{{ obj.georeferenced_local_time }}</th>
+      <th class="lead">{{ obj.time_zone }}</th>
+      <th class="lead">{{ obj.verbatim_locality }}</th>
+      <th class="lead">{{ obj.mission_detailled_name }}</th>
+      <th class="lead">{{ obj.formation }}</th>
+      <th class="lead">{{ obj.plane_type }}</th>
+      <th class="lead">{{ obj.polarity }}</th>
+      <th class="lead">{{ obj.dip }}</th>
+      <th class="lead">{{ obj.azimuth }}</th>
+      <th class="lead">{{ obj.measurement_accuracy }}</th>
+      <th class="lead">{{ obj.measurement_determined_date }}</th>
+      <th class="lead">{{ obj.measurement_determined_by }}</th>
+      <th class="lead">{{ obj.instrument_id }}</th>
+      <th class="lead">{{ obj.location_on_gis }}</th>
+    </tr>
+  {% endfor %}
+</tbody>
 {% endblock %}
+      
