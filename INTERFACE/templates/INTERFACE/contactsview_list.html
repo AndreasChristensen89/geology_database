@@ -7,14 +7,25 @@
     {% for obj in page_obj %}
     <tr>
       <th class="lead">{{ forloop.counter }}</th>
+      <th class="lead">{{ obj.contact_id }}</th>
       <th class="lead">{{ obj.location_id }}</th>
-      <th class="lead">{{ obj.contact_type }}</th>
-      <th class="lead">{{ obj.associated_lithologic_observation_1 }}</th>
-      <th class="lead">{{ obj.associated_lithologic_observation_2 }}</th>
-      <th class="lead">{{ obj.associated_measured_plane_id }}</th>
-      <th class="lead">{{ obj.contact_type_remarks }}</th>
+      <th class="lead">{{ obj.decimal_longitude }}</th>
+      <th class="lead">{{ obj.decimal_latitude }}</th>
+      <th class="lead">{{ obj.elevation_in_meters }}</th>
+      <th class="lead">{{ obj.geodetic_datum }}</th>
+      <th class="lead">{{ obj.northing_in_meters }}</th>
+      <th class="lead">{{ obj.easting_in_meters }}</th>
+      <th class="lead">{{ obj.georeferenced_by }}</th>
+      <th class="lead">{{ obj.verbatim_locality }}</th>
+      <th class="lead">{{ obj.mission_detailled_name }}</th>
+      <th class="lead">{{ obj.observation_determined_date }}</th>
       <th class="lead">{{ obj.observation_determined_by }}</th>
-      <th class="lead">{{ obj.observation_date }}</th>
+      <th class="lead">{{ obj.contact_type }}</th>
+      <th class="lead">{{ obj.lithology_1 }}</th>
+      <th class="lead">{{ obj.lithology_2 }}</th>
+      <th class="lead">{{ obj.plane_type }}</th>
+      <th class="lead">{{ obj.plane_orientation }}</th>
+      <th class="lead">{{ obj.contact_type_remarks }}</th>
     </tr>
   {% endfor %}
 </tbody>

@@ -3,23 +3,65 @@ from django.shortcuts import render
 from .models import *
 from django.views.generic import ListView
 from django.core import serializers
+import folium
 
 def index(request):
     template = "INTERFACE/index.html"
+    lat = 15
+    lat_two = 10
+    lng = -10
+    lng_two = 50
+    text = "Somewhere"
+    text_two = "Somewhere Else"
+    content = "Place"
+    content_two = "Another Place"
 
-    return render(request, template)
+    contacts = Contacts.objects.all()
+    list = ""
+    for obj in contacts:
+        list = list + f'<p>{obj.contact_id}</p>'
+
+    m = folium.Map(location=[19, -12], zoom_start=2)
+
+    folium.Marker([lat, lng], tooltip=text, popup=content).add_to(m)
+    folium.Marker([lat_two, lng_two], tooltip=text_two, popup=list).add_to(m)
+
+    m = m._repr_html_()
+    context = {
+        'm': m
+    }
+
+    return render(request, template, context)
 
 class SamplesListView(ListView):
     paginate_by = 20
     model = Samples
 
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        context['fields'] = [f.name for f in Samples._meta.get_fields()]
+        return context
+
 class ContactsListView(ListView):
     paginate_by = 20
     model = Contacts
 
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        context['fields'] = [f.name for f in Contacts._meta.get_fields()]
+        return context
+
 class LexiconFossilsListView(ListView):
     paginate_by = 20
     model = LexiconFossils
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        context['fields'] = [f.name for f in LexiconFossils._meta.get_fields()]
+        return context
 
 # -------------------------------------- views --------------------------------------
 # done
@@ -45,15 +87,15 @@ class FormationsViewList(ListView):
         return context
 
 # not used for now
-class GeographyColumnsViewList(ListView):
-    paginate_by = 50
-    model = GeographyColumnsView
+# class GeographyColumnsViewList(ListView):
+#     paginate_by = 50
+#     model = GeographyColumnsView
 
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super().get_context_data(**kwargs)
-        context['fields'] = [f.name for f in GeographyColumnsView._meta.get_fields()]
-        return context
+#     def get_context_data(self, **kwargs):
+#         # Call the base implementation first to get a context
+#         context = super().get_context_data(**kwargs)
+#         context['fields'] = [f.name for f in GeographyColumnsView._meta.get_fields()]
+#         return context
 
 # done
 class AnalysisArArViewList(ListView):
@@ -69,12 +111,12 @@ class AnalysisArArViewList(ListView):
 # base done
 class AnalysisFissionTracksViewList(ListView):
     paginate_by = 50
-    model = AnalysisFissionTracksView
+    model = AnalysisFissionFracksView
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
-        context['fields'] = [f.name for f in AnalysisFissionTracksView._meta.get_fields()]
+        context['fields'] = [f.name for f in AnalysisFissionFracksView._meta.get_fields()]
         return context
 
 # base done
@@ -113,12 +155,12 @@ class FieldMissionsViewList(ListView):
 # not for now
 class GeometryColumnsViewList(ListView):
     paginate_by = 50
-    model = GeometryColumnsView
+    model = GeometryColumns
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
-        context['fields'] = [f.name for f in GeometryColumnsView._meta.get_fields()]
+        context['fields'] = [f.name for f in GeometryColumns._meta.get_fields()]
         return context
 
 # base done
@@ -168,12 +210,12 @@ class MeasurementsPlanesViewList(ListView):
 # base done
 class MissionsViewList(ListView):
     paginate_by = 50
-    model = MissionsView
+    model = FieldMissionsView
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
-        context['fields'] = [f.name for f in MissionsView._meta.get_fields()]
+        context['fields'] = [f.name for f in FieldMissionsView._meta.get_fields()]
         return context
 
 # base done

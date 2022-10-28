@@ -7,10 +7,22 @@
     {% for obj in page_obj %}
     <tr>
       <th class="lead">{{ forloop.counter }}</th>
+      <th class="lead">{{ obj.description_lithology_id }}</th>
       <th class="lead">{{ obj.location_id }}</th>
+      <th class="lead">{{ obj.decimal_longitude }}</th>
+      <th class="lead">{{ obj.decimal_latitude }}</th>
+      <th class="lead">{{ obj.elevation_in_meters }}</th>
+      <th class="lead">{{ obj.geodetic_datum }}</th>
+      <th class="lead">{{ obj.northing_in_meters }}</th>
+      <th class="lead">{{ obj.easting_in_meters }}</th>
+      <th class="lead">{{ obj.georeferenced_by }}</th>
+      <th class="lead">{{ obj.verbatim_locality }}</th>
+      <th class="lead">{{ obj.mission_detailled_name }}</th>
+      <th class="lead">{{ obj.observation_determined_date }}</th>
+      <th class="lead">{{ obj.observation_determined_by }}</th>
+      <th class="lead">{{ obj.formation }}</th>
       <th class="lead">{{ obj.simple_lithology_description }}</th>
       <th class="lead">{{ obj.detailled_lithology_description }}</th>
-      <th class="lead">{{ obj.formation }}</th>
       <th class="lead">{{ obj.alteration_facies }}</th>
       <th class="lead">{{ obj.metamorphism_facies }}</th>
       <th class="lead">{{ obj.particle_type }}</th>

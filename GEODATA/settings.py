@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'GEODATA.wsgi.application'
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME': 'new_geology_database',
+       'NAME': 'updated_geology_database',
        'USER': 'postgres',
        'PASSWORD': os.environ.get("DATABASE_KEY"),
        'HOST': 'localhost',

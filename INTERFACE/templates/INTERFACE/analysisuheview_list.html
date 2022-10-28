@@ -7,18 +7,18 @@
     {% for obj in page_obj %}
     <tr>
       <th class="lead">{{ forloop.counter }}</th>
+      <th class="lead">{{ obj.analysis_id }}</th>
       <th class="lead">{{ obj.material_sample_id }}</th>
       <th class="lead">{{ obj.location_id }}</th>
       <th class="lead">{{ obj.decimal_latitude }}</th>
       <th class="lead">{{ obj.decimal_longitude }}</th>
       <th class="lead">{{ obj.elevation_in_meters }}</th>
-      <th class="lead">{{ obj.barometric_elevation_in_meters }}</th>
       <th class="lead">{{ obj.verbatim_locality }}</th>
       <th class="lead">{{ obj.field_mission_id }}</th>
-      <th class="lead">{{ obj.analysed_by }}</th>
       <th class="lead">{{ obj.sampling_date }}</th>
       <th class="lead">{{ obj.simple_lithology_description }}</th>
       <th class="lead">{{ obj.alteration_facies }}</th>
+      <th class="lead">{{ obj.simple_lithology_description }}</th>
       <th class="lead">{{ obj.metamorphism_facies }}</th>
       <th class="lead">{{ obj.formation }}</th>
       <th class="lead">{{ obj.current_storage }}</th>

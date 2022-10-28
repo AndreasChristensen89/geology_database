@@ -14,7 +14,7 @@ urlpatterns = [
     # Postgres views
     path('field-missions-view', views.FieldMissionsViewList.as_view(), name='field_missions_view'),
     path('formation-view', views.FormationsViewList.as_view(), name='formation_view'),
-    path('geography-columns-view', views.GeographyColumnsViewList.as_view(), name='geography_columns_view'),
+    # path('geography-columns-view', views.GeographyColumnsViewList.as_view(), name='geography_columns_view'),
     path('analysis-ar-ar-view', views.AnalysisArArViewList.as_view(), name='analysis_ar_ar_view'),
     path('analysis-fission-tracks-view', views.AnalysisFissionTracksViewList.as_view(), name='analysis_fission_tracks_view'),
     path('contacts-view', views.ContactsViewList.as_view(), name='contacts_view'),
