@@ -2,6 +2,7 @@ from re import template
 from django.shortcuts import render
 from .models import *
 from django.views.generic import ListView
+from django.views.generic.base import TemplateView
 from django.core import serializers
 import folium
 
@@ -32,6 +33,11 @@ def index(request):
     }
 
     return render(request, template, context)
+
+class MarkersMapView(TemplateView):
+    """Markers map view."""
+
+    template_name = "INTERFACE/map.html"
 
 class SamplesListView(ListView):
     paginate_by = 20
