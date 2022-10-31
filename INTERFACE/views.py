@@ -23,7 +23,7 @@ def map_view(request):
     for obj in locations:
         geodetic_datum = f'<p><b>Geodetic Datum:</b> {obj.geodetic_datum}</p>'
         georeferenced_by = f'<br><p><b>Georeferenced by:</b> {obj.georeferenced_by}</p><br>'
-        link_id = f'<div id="pop-id" data-id={obj.location_id}>Link</div>'
+        link_id = f'<div class="pop-id" data-id={obj.location_id}>Link</div>'
         hover = f'<p><b>Elevation:</b> {obj.elevation_in_meters}</p><br><p><b>Mission Name:</b> {obj.mission_detailled_name}</p>'
         content = geodetic_datum + georeferenced_by + link_id
         folium.Marker([obj.decimal_latitude, obj.decimal_longitude], tooltip=hover, popup=content).add_to(m)
