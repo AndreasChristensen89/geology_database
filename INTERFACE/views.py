@@ -1,3 +1,5 @@
+from cgi import test
+from operator import concat
 from re import template
 from django.shortcuts import render
 from .models import *
@@ -20,11 +22,17 @@ def map_view(request):
     m = folium.Map(location = [45.82,6.86], zoom_start=8)
 
     locations = LocationsView.objects.all()[0:100]
+
     for obj in locations:
+        # test_url = f"{% url 'INTERFACE:location_data' {location.location_id} %}"
         geodetic_datum = f'<p><b>Geodetic Datum:</b> {obj.geodetic_datum}</p>'
         georeferenced_by = f'<br><p><b>Georeferenced by:</b> {obj.georeferenced_by}</p><br>'
-        link_id = f'<div class="pop-id" data-id={obj.location_id}>Link</div>'
+        # test_link = f'<a href={test_url}></a>'
+        # js_link_id = <script>window.onload = function() {document.getElementById("'''+obj.location_id+'''").addEventListener("click", clickLink);}</script>'''
+        link_id = f'<div class="pop-id" style="cursor: pointer;" id={obj.location_id} data-id={obj.location_id}>Link</div>'
+        # concat_element = js_link_id+link_id
         hover = f'<p><b>Elevation:</b> {obj.elevation_in_meters}</p><br><p><b>Mission Name:</b> {obj.mission_detailled_name}</p>'
+        
         content = geodetic_datum + georeferenced_by + link_id
         folium.Marker([obj.decimal_latitude, obj.decimal_longitude], tooltip=hover, popup=content).add_to(m)
 
