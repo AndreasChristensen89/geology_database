@@ -1,8 +1,20 @@
-{% extends "view_base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block content %}
-<div id="map"></div>
+<div class="container">
+    <div class="row">
+        {{ m|safe }}
+    </div>
+</div>
 
-<script src="{% static 'js/map.js' %}"></script>
+<div class="row">
+    {% for location in locations %}
+        <a href="{% url 'INTERFACE:location_data' location.location_id %}">Link</a>
+    {% endfor %}
+</div>
+
+<script type="text/javascript">
+    // document.getElementsByClassName
+</script>
 {% endblock%}

@@ -1,16 +1,25 @@
-.footer {
-    position: fixed;
-    left: 0;
+footer {
+    /* position: absolute; */
     bottom: 0;
     width: 100%;
-    text-align: center;
-  }
+    height: 4.5rem;
+    color: white;
+    background-color: rgb(80 76 76)
+}
 
 #bottom-space {
-  height: 100px;
+  height: 10%;
 }
 
 td {
   height: 20px;
   overflow: auto;
+}
+
+table {
+  overflow: scroll;
+}
+
+#map {
+  height: 200px;
 }

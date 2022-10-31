@@ -5,39 +5,48 @@ from django.views.generic import ListView
 from django.views.generic.base import TemplateView
 from django.core import serializers
 import folium
+from django.shortcuts import get_object_or_404
 
 def index(request):
     template = "INTERFACE/index.html"
-    lat = 15
-    lat_two = 10
-    lng = -10
-    lng_two = 50
-    text = "Somewhere"
-    text_two = "Somewhere Else"
-    content = "Place"
-    content_two = "Another Place"
 
-    contacts = Contacts.objects.all()
-    list = ""
-    for obj in contacts:
-        list = list + f'<p>{obj.contact_id}</p>'
+    return render(request, template)
 
-    m = folium.Map(location=[19, -12], zoom_start=2)
+def map_view(request):
+    """Markers map view."""
 
-    folium.Marker([lat, lng], tooltip=text, popup=content).add_to(m)
-    folium.Marker([lat_two, lng_two], tooltip=text_two, popup=list).add_to(m)
+    template = "INTERFACE/map.html"
+
+    m = folium.Map(location = [45.82,6.86], zoom_start=8)
+
+    locations = LocationsView.objects.all()[0:100]
+    for obj in locations:
+        geodetic_datum = f'<p><b>Geodetic Datum:</b> {obj.geodetic_datum}</p>'
+        georeferenced_by = f'<br><p><b>Georeferenced by:</b> {obj.georeferenced_by}</p><br>'
+        link_id = f'<div id="pop-id" data-id={obj.location_id}>Link</div>'
+        hover = f'<p><b>Elevation:</b> {obj.elevation_in_meters}</p><br><p><b>Mission Name:</b> {obj.mission_detailled_name}</p>'
+        content = geodetic_datum + georeferenced_by + link_id
+        folium.Marker([obj.decimal_latitude, obj.decimal_longitude], tooltip=hover, popup=content).add_to(m)
 
     m = m._repr_html_()
+
     context = {
-        'm': m
+        'm': m,
+        'locations': locations
     }
 
     return render(request, template, context)
 
-class MarkersMapView(TemplateView):
-    """Markers map view."""
 
-    template_name = "INTERFACE/map.html"
+def location_data(request, location_id):
+    location_object = get_object_or_404(LocationsView, pk=location_id)
+    template = "INTERFACE/index.html"
+    context = {
+        'location_object': location_object
+    }
+
+    return render(request, template, context)
+
 
 class SamplesListView(ListView):
     paginate_by = 20

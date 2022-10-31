@@ -6,19 +6,18 @@
   <tbody>
     {% for obj in page_obj %}
     <tr>
-      <th class="lead">{{ forloop.counter }}</th>
+      <th class="lead">{{ obj.location_id }}</th>
       <th class="lead">{{ obj.decimal_longitude }}</th>
       <th class="lead">{{ obj.decimal_latitude }}</th>
+      <th class="lead">{{ obj.elevation_in_meters }}</th>
       <th class="lead">{{ obj.geodetic_datum }}</th>
       <th class="lead">{{ obj.northing_in_meters }}</th>
       <th class="lead">{{ obj.easting_in_meters }}</th>
       <th class="lead">{{ obj.georeferenced_by }}</th>
-      <th class="lead">{{ obj.elevation_in_meters }}</th>
-      <th class="lead">{{ obj.barometric_elevation_in_meters }}</th>
+      <th class="lead">{{ obj.verbatim_locality }}</th>
       <th class="lead">{{ obj.georeferenced_local_date }}</th>
       <th class="lead">{{ obj.georeferenced_local_time }}</th>
       <th class="lead">{{ obj.time_zone }}</th>
-      <th class="lead">{{ obj.verbatim_locality }}</th>
       <th class="lead">{{ obj.mission_detailled_name }}</th>
       <th class="lead">{{ obj.observation_site_type }}</th>
       <th class="lead">{{ obj.azimuth_of_the_osbervation }}</th>

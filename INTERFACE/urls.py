@@ -5,8 +5,8 @@ app_name = 'INTERFACE'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path("api/", include("markers.api")),
-    path("map/", views.MarkersMapView.as_view(), name='map'),
+    # path("api/", include("markers.api")),
+    path("map/", views.map_view, name='map'),
     path('samples-model', views.SamplesListView.as_view(), name='sample_model'),
     path('contacts-model', views.ContactsListView.as_view(), name='contacts_model'),
     path('lexicon-follies-model', views.LexiconFossilsListView.as_view(), name='lexicon_follies_model'),
@@ -30,4 +30,6 @@ urlpatterns = [
     path('missions-view', views.MissionsViewList.as_view(), name='missions_view'),
     path('sample-sections-view', views.SampleSectionsViewList.as_view(), name='sample_sections_view'),
     path('samples-view', views.SamplesViewList.as_view(), name='samples_view'),
+    # object details views
+    path('<str:location_id>/', views.location_data, name='location_data'),
 ]
